@@ -23,7 +23,7 @@ const About = () => {
 
                     <div className="row content">
                         <div className="col-lg-6">
-                            <h2>HAMBOs INCORPORATION</h2>
+                            <h2>HAMBOS INCORPORATION</h2>
                             <h3>We offer the best solution to broad range of clientele</h3>
                         </div>
                         <div className="col-lg-6 pt-4 pt-lg-0">
