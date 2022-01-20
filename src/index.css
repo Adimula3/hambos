@@ -50,6 +50,8 @@
 }
 .navbar li {
   position: relative;
+  text-decoration: none;
+  margin-right: 70px;
 }
 .navbar,.change, .navbar .change:focus {
   display: flex;
@@ -61,6 +63,7 @@
   color: white;
   white-space: nowrap;
   transition: 0.3s;
+  text-decoration: none;
 }
 .navbar .change i, .navbar .change:focus i {
   font-size: 12px;
@@ -69,6 +72,7 @@
 }
 .navbar .change:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > .change {
   color: #158c82;
+  text-decoration: none;
 }
 
 /*--------------------------------------------------------------
@@ -133,7 +137,7 @@
   width: 10%;
 }
 #hero .carousel-control-next-icon, #hero .carousel-control-prev-icon {
-  background: none;
+  background-color: white;
   font-size: 48px;
   line-height: 1;
   width: auto;
@@ -165,6 +169,7 @@
   #hero p {
     width: 60%;
   }
+
   #hero .carousel-control-prev, #hero .carousel-control-next {
     width: 5%;
   }

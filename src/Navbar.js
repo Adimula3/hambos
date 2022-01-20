@@ -15,9 +15,6 @@ const Navbar = () => {
               <li><Link className="active" to="/">Home</Link></li>
               <li><Link className="change" to="/About">About</Link></li>
               <li><Link className="change" to="/">Services</Link></li>
-              <li><Link className="change" to="/">Portfolio</Link></li>
-              <li><Link className="change" to="/">Team</Link></li>
-              <li><Link className="change" to="/">Blog</Link></li>
               <li><Link className="change" to="/Contact">Contact Us</Link></li>
                 <i className="bi bi-list mobile-nav-toggle"></i>
             </ul>
