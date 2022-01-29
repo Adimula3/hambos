@@ -33,11 +33,11 @@ const Home = () => {
                 </div>
 
                 <Link className="carousel-control-prev" to="#heroCarousel" role="button" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"><img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-left-arrow-arrows-dreamstale-lineal-dreamstale.png"/></span>
+                    <span className="carousel-control-prev-icon" aria-hidden="true"><img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-left-arrow-arrows-dreamstale-lineal-dreamstale.png" alt=""/></span>
                 </Link>
 
                 <Link className="carousel-control-next" to="#heroCarousel" role="button" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"><img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-right-arrow-arrows-dreamstale-lineal-dreamstale-15.png"/></span>
+                    <span className="carousel-control-next-icon" aria-hidden="true"><img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-right-arrow-arrows-dreamstale-lineal-dreamstale-15.png" alt=""/></span>
                 </Link>
 
             </div>
