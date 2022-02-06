@@ -1,16 +1,52 @@
 import React, { useState} from "react";
 import {Link} from "react-router-dom";
-import {db} from "./firebase";
+import {setDoc, doc, serverTimestamp} from 'firebase/firestore'
+import {db} from "./firebase.config";
+import { v4 as uuidv4 } from 'uuid'
+import {toast} from "react-toastify";
+
+const Contact = () => {
 
    const [formData, setFormData]= useState({
-       name:"",
-       email:"",
-       subject:"",
-       message:","
+       name:'',
+       email:'',
+       subject:'',
+       message:'',
+       timestamp: '',
    })
-      
-     const {name,email,subject,message} = formData
-    
+
+     const {name, email, subject, message} = formData
+    const onSubmit =  async (e) => {
+       e.preventDefault()
+       // console.log({...formData})
+        try{
+            let idUnique = `${formData.name
+                .replace(/,?\s+/g, '-')
+                .toLowerCase()}-${uuidv4()}`
+
+           const formDataCopy = {...formData}
+            formDataCopy.timestamp = serverTimestamp()
+           const contactRef = doc(db, 'contacts', idUnique)
+            await setDoc(contactRef, formDataCopy )
+            toast.success("Contact saved Successfully")
+
+        }
+        catch (error) {
+           console.log({error})
+            toast.error("Unable to save contact")
+
+        }
+
+
+    }
+  const onChange = (e) => {
+       setFormData((prevState) => ({
+           ...prevState,
+           [e.target.id]: e.target.value,
+       }))
+
+    }
+
        return(
             <main id="main">
                 <section id="breadcrumbs" className="breadcrumbs">
@@ -60,29 +96,47 @@ import {db} from "./firebase";
                             </div>
 
                             <div className="col-lg-6">
-                                <form action=""  className="php-email-form" onSubmit={handleSubmit}>
+                                <form action=""  className="php-email-form" onSubmit={onSubmit}>
                                     <div className="row">
                                         <div className="col-md-6 form-group">
-                                            <input type="text" value={name} onChange={(e) =>setName(e.target.value)} name="name" className="form-control" id="name"
-                                                   placeholder="Your Name" required/>
+                                            <input type="text"
+                                                   value={name}
+                                                   onChange={onChange}
+                                                   name="name"
+                                                   className="form-control"
+                                                   id="name"
+                                                   placeholder="Your Name"
+                                                   required/>
                                         </div>
                                         <div className="col-md-6 form-group mt-3 mt-md-0">
-                                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" name="email" id="email"
+                                            <input type="email"
+                                                   value={email}
+                                                   onChange={onChange}
+                                                   className="form-control"
+                                                   name="email"
+                                                   id="email"
                                                    placeholder="Your Email" required/>
                                         </div>
                                     </div>
                                     <div className="form-group mt-3">
-                                        <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)}  className="form-control" name="subject" id="subject"
+                                        <input type="text"
+                                               value={subject}
+                                               onChange={onChange}
+                                               className="form-control"
+                                               name="subject"
+                                               id="subject"
                                                placeholder="Subject" required/>
                                     </div>
                                     <div className="form-group mt-3">
-                                        <textarea className="form-control" value={message} onChange={(e) => setMessage(e.target.value)} name="message" rows="5" placeholder="Message"
-                                                  required></textarea>
-                                    </div>
-                                    <div className="my-3">
-                                        <div className="loading">Loading</div>
-                                        <div className="error-message"></div>
-                                        <div className="sent-message">Your message has been sent. Thank you!</div>
+                                        <textarea className="form-control"
+                                                  value={message}
+                                                  onChange={onChange}
+                                                  name="message"
+                                                  rows="5"
+                                                  id="message"
+                                                  placeholder="Message"
+                                                  required>
+                                        </textarea>
                                     </div>
                                     <div className="text-center">
                                         <button type="submit">Send Message</button>

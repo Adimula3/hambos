@@ -1,4 +1,6 @@
-
+import React from "react";
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Navbar from "./Navbar";
 import Home from "./Home";
 import About from "./About";
@@ -11,10 +13,11 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 function App() {
   return (
 
-            <Router>
-                <div className="App">
-                    <Navbar/>
-                </div>
+      <>
+          <Router>
+              <div className="App">
+                  <Navbar/>
+              </div>
               <div className='content'>
                   <Routes>
                       <Route exact path="/" element={<Home />} />
@@ -23,7 +26,9 @@ function App() {
 
                   </Routes>
               </div>
-      </Router>
+          </Router>
+          <ToastContainer />
+      </>
 
 
   );
