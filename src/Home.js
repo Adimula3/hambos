@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {Carousel} from "react-bootstrap";
 import './Home.css';
-//import ImageOne from './Img/pexels-emma-blackbourn-3789449.jpg'
+
 
 const Home = () => {
     return (
@@ -28,10 +28,6 @@ const Home = () => {
                 </Carousel.Item>
             </Carousel>
 
-            <div className="container-fluid mt-3">
-                <h3>Carousel Example</h3>
-                <p>The following example shows how to create a basic carousel with indicators and controls.</p>
-            </div>
         </div>
     );
  }

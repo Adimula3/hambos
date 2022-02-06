@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState} from "react";
 import {Link} from "react-router-dom";
+import {db} from "./firebase";
 
-const Contact = () => {
-     return(
+   const [formData, setFormData]= useState({
+       name:"",
+       email:"",
+       subject:"",
+       message:","
+   })
+      
+     const {name,email,subject,message} = formData
+    
+       return(
             <main id="main">
                 <section id="breadcrumbs" className="breadcrumbs">
                     <div className="container">
@@ -51,23 +60,23 @@ const Contact = () => {
                             </div>
 
                             <div className="col-lg-6">
-                                <form action="" method="post" className="php-email-form">
+                                <form action=""  className="php-email-form" onSubmit={handleSubmit}>
                                     <div className="row">
                                         <div className="col-md-6 form-group">
-                                            <input type="text" name="name" className="form-control" id="name"
+                                            <input type="text" value={name} onChange={(e) =>setName(e.target.value)} name="name" className="form-control" id="name"
                                                    placeholder="Your Name" required/>
                                         </div>
                                         <div className="col-md-6 form-group mt-3 mt-md-0">
-                                            <input type="email" className="form-control" name="email" id="email"
+                                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" name="email" id="email"
                                                    placeholder="Your Email" required/>
                                         </div>
                                     </div>
                                     <div className="form-group mt-3">
-                                        <input type="text" className="form-control" name="subject" id="subject"
+                                        <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)}  className="form-control" name="subject" id="subject"
                                                placeholder="Subject" required/>
                                     </div>
                                     <div className="form-group mt-3">
-                                        <textarea className="form-control" name="message" rows="5" placeholder="Message"
+                                        <textarea className="form-control" value={message} onChange={(e) => setMessage(e.target.value)} name="message" rows="5" placeholder="Message"
                                                   required></textarea>
                                     </div>
                                     <div className="my-3">
